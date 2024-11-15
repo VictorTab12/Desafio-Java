@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Optimization Alert List</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1c1b45;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 80%;
+      max-width: 900px;
+      background-color: #292759;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      margin: 20px auto;
+    }
+
+    h3 {
+      color: #fff;
+      margin-top: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .btn-mb-3 {
+      margin-bottom: 20px;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #444;
+    }
+
+    th {
+      background-color: #444;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background-color: #333;
+    }
+
+    a.btn {
+      margin-right: 10px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    a.btn-primary {
+      background-color: #007bff;
+      border: none;
+    }
+
+    a.btn-danger {
+      background-color: #dc3545;
+      border: none;
+    }
+
+    a.btn-primary:hover {
+      background-color: #0056b3;
+    }
+
+    a.btn-danger:hover {
+      background-color: #c82333;
+    }
+
+    a.back-home {
+      display: block;
+      margin-top: 20px;
+      color: #fff;
+      text-align: center;
+      transition: color 0.3s;
+    }
+
+    a.back-home:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container" align="center">
+  <h3>Optimization Alert List</h3>
+  <a th:href="@{/addNewOptimizationAlert}" class="btn btn-primary btn-sm btn-mb-3">Add Optimization Alert</a>
+  <table style="width: 80%" border="1" class="table table-stripped table-responsive-md">
+    <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Date</th>
+      <th>Telephone ID</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="optimizationAlert : ${allOptimizationAlertList}">
+      <td th:text="${optimizationAlert.type}"></td>
+      <td th:text="${optimizationAlert.description}"></td>
+      <td th:text="${optimizationAlert.date}"></td>
+      <td th:text="${optimizationAlert.telephone}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/home}">Back to Home</a>
+</div>
+</body>
+</html>
